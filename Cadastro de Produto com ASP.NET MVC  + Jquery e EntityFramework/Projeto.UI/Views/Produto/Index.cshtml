@@ -1,0 +1,105 @@
+﻿
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Cadastro de Produto</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+
+</head>
+<body class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="well well-sm">
+                Cadastro de Produto
+            </div>
+        </div>
+    </div>
+
+    <br />
+    <h4>Seja Bem-Vindo ao Projeto</h4>
+    <hr />
+
+    <div class="row">
+        <div class="col-md-4">
+
+            <label>Nome:</label>
+            <input type="text" id="txtNome" class="form-control"/>
+            <br />
+
+            <label>Preço:</label>
+            <input type="text" id="txtPreco" class="form-control"/>
+            <br />
+
+            <label>Quantidade:</label>
+            <input type="text" id="txtQuantidade" class="form-control"/>
+            <br />
+            
+            <button id="btnCadastro" class="btn btn-primary">
+                
+                <i class="glyphicon glyphicon-ok"> Cadastrar Produto </i>
+
+            </button>
+
+            <br />
+            <br />
+
+            <label id="lblMensagem"/>
+
+        </div>
+    </div>
+
+    <script src="~/Scripts/jquery-1.9.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    
+    
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+
+            $("#btnCadastro").click(function () {
+
+                var Produto = {
+
+                    nome: $("#txtNome").val(),
+                    preco: $("#txtPreco").val(),
+                    quantidade: $("#txtQuantidade").val()
+
+
+                };
+
+
+                $.ajax({
+
+
+                    type: "POST",
+                    url: "/Produto/CadastrarProduto",
+                    data: Produto,
+                    success: function (msg) {
+
+                        $("#lblMensagem").html(msg);
+
+                    },
+
+                    error: function (e) {
+
+                        $("#lblMensagem").html(e.status);
+
+                    }
+
+                });
+
+
+
+            });
+
+        });
+
+    </script>
+
+</body>
+</html>

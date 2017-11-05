@@ -1,0 +1,5 @@
+c:\users\mark ii\documents\visual studio 2017\Projects\Aula19\Projeto.Entidades\bin\Debug\Projeto.Entidades.dll
+c:\users\mark ii\documents\visual studio 2017\Projects\Aula19\Projeto.Entidades\bin\Debug\Projeto.Entidades.pdb
+c:\users\mark ii\documents\visual studio 2017\Projects\Aula19\Projeto.Entidades\obj\Debug\Projeto.Entidades.csprojResolveAssemblyReference.cache
+c:\users\mark ii\documents\visual studio 2017\Projects\Aula19\Projeto.Entidades\obj\Debug\Projeto.Entidades.dll
+c:\users\mark ii\documents\visual studio 2017\Projects\Aula19\Projeto.Entidades\obj\Debug\Projeto.Entidades.pdb
