@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <meta charset="utf-8" />
+    <title>Web Api + Agunlar & EntityFramework</title>
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/bootstrap-theme.min.css" rel="stylesheet" />
+</head>
+<body class="container">
+
+
+    <!--Single Page -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="well well-lg">
+                <h3>Projeto de Controle de Funcionários</h3>
+                Asp.Net WebApi + Angular & EntityFramework
+                <ul>
+                    <li>
+                        <a href="#funcionario/cadastro">
+                            Cadastrar Funcionário
+                        </a>
+
+                    </li>
+                    <li>
+                        <a href="#funcionario/consulta">
+                            Consultar Funcionário
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <hr />
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div ng-view>
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="Scripts/jquery-1.9.1.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="Scripts/angular.min.js"></script>
+    <script src="Scripts/angular-route.min.js"></script>
+    <script src="App/Scripts/App.js"></script>
+    <script src="App/Scripts/Route.js"></script>
+    <script src="App/Controllers/Funcionario/CadastroController.js"></script>
+    <script src="App/Controllers/Funcionario/ConsultaController.js"></script>
+
+</body>
+</html>

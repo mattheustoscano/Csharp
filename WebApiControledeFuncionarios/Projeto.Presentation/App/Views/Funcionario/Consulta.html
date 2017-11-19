@@ -1,0 +1,161 @@
+﻿
+
+
+
+
+<div class="row">
+    <div class="col-lg-4">
+
+        <div style="display:-webkit-inline-box">
+            <input type="text" placeholder="Digite aqui" class="form-control" ng-model="Nome"/>
+            &nbsp;
+            <button class="btn btn-default" ng-click="obterpornome()">
+                <i class="glyphicon glyphicon-search"></i> Pesquisar Funcionário
+            </button>
+        </div>
+
+    </div>
+</div>
+
+<br />
+
+
+<table class="table table-bordered" ng-init="consultartodos()">
+        <thead>
+            <tr>
+                <th>
+                    Código
+                </th>
+                <th>
+                    Nome
+                </th>
+                <th>
+                    Salário
+                </th>
+                <th>
+                    Data de Admissão
+                </th>
+                <th>
+                    Operações
+                </th>
+            </tr>
+        </thead>
+
+        <tbody >
+
+
+            <tr ng-repeat="f in lista">
+                <td>{{f.IdFuncionario}}</td>
+                <td>{{f.Nome}}</td>
+                <td>{{f.Salario | currency: 'R$'}}</td>
+                <td>{{f.DataAdmissao | date: 'dd/MM/yyyy'}}</td>
+                <td>
+                    <button class="btn btn-primary btn-sm" data-target="#janelaedicao" data-toggle="modal" ng-click="obterporid(f.IdFuncionario)">
+                        <i class="glyphicon glyphicon-edit"></i> Atualizar
+                    </button>
+                
+                
+                    <button class="btn btn-danger btn-sm" data-target="#janelaexclusao" data-toggle="modal" ng-click="obterporid(f.IdFuncionario)">
+                        <i class="glyphicon glyphicon-remove"></i> Excluir
+                    </button>
+                </td>
+
+            </tr>
+
+        </tbody>
+
+        <tfoot>
+            <tr>
+                <td colspan="5">
+                    Quantidade de Funcionários: {{lista.length}}
+                </td>
+            </tr>
+        </tfoot>
+</table>
+
+
+<div class="modal fade" id="janelaedicao">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-primary">
+                <h3>
+                    Edição de Funcionário
+                </h3>
+            </div>
+
+            <div class="modal-body">
+
+                <label>Código</label>
+                <input readonly="readonly" type="text" class="form-control" placeholder="Digite aqui..." ng-model="Funcionario.IdFuncionario"/>
+                <br />
+                <label>Nome</label>
+                <input type="text" class="form-control" placeholder="Digite aqui..." ng-model="Funcionario.Nome" />
+                <br />
+                <label>Salário</label>
+                <input type="text" class="form-control" placeholder="Digite aqui..." ng-model="Funcionario.Salario" />
+                <br />
+                <label>Data de Admissão</label>
+                <input type="date" value="{{Funcionario.DataAdmissao | date:'yyyy-MM-dd'}}" class="form-control" placeholder="Digite aqui..." ng-model="Funcionario.DataAdmissao" />
+                <br />
+
+            </div>
+
+
+            <div class="modal-footer">
+
+                <button class="btn btn-default" data-dismiss="modal">
+                    <i class="glyphicon glyphicon-unchecked"></i> Cancelar
+                </button>
+                
+
+                <button class="btn btn-primary" data-dismiss="modal" ng-click="atualizar()">
+                    <i class="glyphicon glyphicon-ok"></i> Atualizar
+                </button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="janelaexclusao">
+
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+
+            <div class="modal-header bg-danger">
+
+                <h3> Exclusão de Funcionário</h3>
+
+            </div>
+        
+            <div class="modal-body">
+
+
+                <strong>Código do funcionário: {{Funcionario.IdFuncionario}}</strong>
+                <br />
+                <strong>Nome do funcionário: {{Funcionario.Nome}}</strong>
+                <br />
+                <strong>Salário do funcionário: {{Funcionario.Salario}}</strong>
+                <br />
+                <strong>Data de Admissão do funcionário: {{Funcionario.DataAdmissao | date:'dd/MM/yyyy'}}</strong>
+            </div>
+        
+            <div class="modal-footer">
+
+
+                <button class="btn btn-default" data-dismiss="modal">
+                    <i class="glyphicon glyphicon-unchecked"></i> Cancelar
+                </button>
+                <button class="btn btn-danger" data-dismiss="modal" ng-click="excluir(Funcionario.IdFuncionario)">
+                    <i class="glyphicon glyphicon-alert"></i> Excluir
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

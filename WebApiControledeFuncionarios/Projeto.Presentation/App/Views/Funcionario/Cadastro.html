@@ -1,0 +1,32 @@
+﻿
+
+
+
+<div class="col-lg-4">
+
+    <h4>Cadastro de Funcionários</h4>
+    
+    <label>Nome</label>
+    <input type="text" class="form-control" placeholder="Digite aqui..." ng-model="Funcionario.Nome"/>
+    <br />
+    <label>Salário</label>
+    <input type="text" class="form-control" placeholder="Digite aqui..." ng-model="Funcionario.Salario"/>
+    <br />
+    <label>Data de Admissão</label>
+    <input type="date" class="form-control" placeholder="Digite aqui..." ng-model="Funcionario.DataAdmissao" />
+    <br />
+
+    <button class="btn btn-success" ng-click="cadastrar()">
+
+        <i class="glyphicon glyphicon-ok">
+             
+        </i> Cadastrar Funcionário 
+
+    </button>
+
+   <br />
+
+    {{mensagem}}
+
+
+</div>
