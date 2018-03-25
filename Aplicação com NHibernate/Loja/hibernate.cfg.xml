@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!-- Xml de configuração de conexão com provedor de Banco de dados-->
+<hibernate-configuration xmlns="urn:nhibernate-configuration-2.2">
+  <session-factory>
+    
+    <!--Propriedade para informar o banco que será utilizado.-->
+    <property name="connection.driver_class">
+      NHibernate.Driver.MySqlDataDriver
+    </property>
+    
+    <!--Propriedade que informa que será responsável pelas conexões do banco-->
+    <property name="connection.provider">
+      <!--Provedor padrão de conexão do Nhibernate-->
+      NHibernate.Connection.DriverConnectionProvider
+    </property>
+
+    <!--Cada banco, fala um dialeto diferente do sql, devemos configurar isto também no nhibernate-->
+    <property name="dialect">
+      NHibernate.Dialect.MySQL5Dialect
+    </property>
+    
+    <!--String de conexão com o meu banco de dados-->
+    <property name="connection.connection_string">
+      Server=localhost;Database=loja;Uid=root;Pwd=1234;
+    </property>
+    
+    <!--Exibir as querys que o nhibernate vai gerar-->
+    <property name="show_sql">true</property>
+    
+    <!--Necessário baixar o driver do MySql ou banco utilizado no projeto-->
+    
+  </session-factory>
+</hibernate-configuration>
+
+
+<!--Necessário adicionar este xml aos recursos inseridos na compilação do projeto-->
+<!--Clique com o botão direito no xml -> vá em propriedades e selecione Recurso Inserido-->
+<!--Selecione Copiar Sempre-->

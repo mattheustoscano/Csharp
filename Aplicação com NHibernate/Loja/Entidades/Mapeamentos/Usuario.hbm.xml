@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<!--Esta tag é necessária para configurarmos o mapeamento do nhibernate-->
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
+  assembly="Loja" 
+  namespace="Loja.Entidades">
+<!--Mapeando a classe de usuário para o nhibernate -->  
+  <class name="Usuario">
+    <!--Informo qual propriedade deverá ser o id da minha tabela-->
+    <id name="Id">
+      <!--Aqui, informo como este atributo deverá ser implementado no banco-->
+      <generator class="identity"/>
+    </id>  
+    <!--Mapeando as outras propriedades da classe-->
+    <property name="Nome"/>
+  </class>  
+</hibernate-mapping>
+
+<!--Necessário adicionar este xml aos recursos inseridos na compilação do projeto-->
+<!--Clique com o botão direito no xml -> vá em propriedades e selecione Recurso Inserido-->
+<!--Selecione Copiar Sempre-->
+  
