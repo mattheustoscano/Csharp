@@ -1,0 +1,78 @@
+﻿
+@{
+    ViewBag.Title = "Cadastro";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+
+
+<div class="col-md-4">
+    <a href="/Home/Index">Voltar </a>para a página inicial.
+    <br />
+    <br />
+
+    <label>Nome</label>
+    <input id="Nome" type="text" class="form-control" placeholder="Digite aqui..." />
+    <br />
+    <label>Preço</label>
+    <input id="Preco" type="text" class="form-control" placeholder="Digite aqui..." />
+    <br />
+    <label>Quantidade</label>
+    <input id="Quantidade" type="text" class="form-control" placeholder="Digite aqui..." />
+
+    <br />
+
+    <button id="btnCadastro" class="btn btn-primary">
+        Cadastrar Produto
+    </button>
+    <br />
+    <span id="mensagem" />
+
+</div>
+
+@section scripts{
+
+    <script type="text/javascript">
+
+
+        
+
+        $(document).ready(function () {
+
+            $("#btnCadastro").click(function () {
+
+                $("#mensagem").html("Enviando requisição...");
+
+                //Pego as propriedades do produto...
+                var Produto = {
+                    Nome: $("#Nome").val(),
+                    Preco: $("#Preco").val(),
+                    Quantidade: $("#Quantidade").val()
+                };
+
+                //Função AJAX para cadastrar produto...
+                
+                $.ajax({
+
+                    type:"POST",
+                    url: "/Produto/CadastrarProduto",
+                    data: Produto,
+                    success: function (msg) {
+                        $("#mensagem").html(msg);
+                    },
+                    error: function (e) {
+                        $("#mensagem").html(e + ", status: " + e.status); 
+                    }
+
+                });
+
+
+
+
+            });        
+
+        });
+
+    </script>
+
+}

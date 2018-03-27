@@ -1,0 +1,45 @@
+﻿
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Asp.Net MVC & Fluent NHibernate(MYSQL)</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+</head>
+<body class="container">
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="nav navbar navbar-collapse">
+                <ul>
+                    <li class="nav-item">
+                        <a href="/Produto/Cadastro">
+                            Cadastrar Produto
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="/Produto/Consulta">
+                            Consultar Produto
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        @RenderBody()
+    </div>
+    
+
+    <script src="~/Scripts/jquery-3.0.0.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+    @RenderSection("scripts",false)
+
+
+</body>
+</html>

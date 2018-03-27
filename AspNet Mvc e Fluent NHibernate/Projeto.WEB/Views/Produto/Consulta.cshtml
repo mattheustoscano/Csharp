@@ -1,0 +1,141 @@
+﻿
+@{
+    ViewBag.Title = "Consulta";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<div class="col-md-12">
+
+    <span id="mensagem"/>
+    <input type="text" placeholder="Pesquisar por nome..." class="form-control" id="campo"/>
+    <br />
+    <table id="tabela" class="table table-hover table-bordered">
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Produto</th>
+                <th>Preço</th>
+                <th>Quantidade</th>
+                <th>Valor Total</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="5">
+                    Total de Produtos: <span id="total"/>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+
+</div>
+
+@section scripts{
+
+    <script type="text/javascript">
+
+        function consultartodos() {
+            $.ajax({
+
+                type: "GET",
+                url: "/Produto/ListarProdutos",
+                data: {},
+                success: function (data) {
+
+                    var conteudo = "";
+
+                    for (var i = 0; i < data.length; i++) {
+                        conteudo += "<tr>";
+
+
+                        conteudo += "<td>" + data[i].IdProduto + "</td>";
+                        conteudo += "<td>" + data[i].Nome + "</td>";
+                        conteudo += "<td>" + data[i].Preco + "</td>";
+                        conteudo += "<td>" + data[i].Quantidade + "</td>";
+                        conteudo += "<td>" + data[i].ValorTotal + "</td>";
+
+                        conteudo += "</tr>";
+
+                    }
+
+                    $("#tabela tbody").html(conteudo);
+                    $("#total").html(data.length);
+
+                },
+                error: function (e) {
+                    $("#mensagem").html(e + ", " + e.status);
+                }
+
+
+            });
+
+        }
+
+
+
+        function consultarpornome() {
+            $("#campo").keyup(function () {
+
+                if ($("#campo").length == 0)
+                    consultartodos();
+                
+               
+                var obj = {
+                    Nome: $("#campo").val()
+                };
+
+                $.ajax({
+
+                    type: "GET",
+                    url: "/Produto/ListarProdutosPorNome",
+                    data: obj,
+                    success: function (data) {
+                        var conteudo = "";
+
+                        for (var i = 0; i < data.length; i++) {
+                            conteudo += "<tr>";
+
+
+                            conteudo += "<td>" + data[i].IdProduto + "</td>";
+                            conteudo += "<td>" + data[i].Nome + "</td>";
+                            conteudo += "<td>" + data[i].Preco + "</td>";
+                            conteudo += "<td>" + data[i].Quantidade + "</td>";
+                            conteudo += "<td>" + data[i].ValorTotal + "</td>";
+
+                            conteudo += "</tr>";
+
+                        }
+
+
+                        $("#tabela tbody").html(conteudo);
+                        $("#total").html(data.length);
+                    },
+                    error: function (e) {
+                        $("#mensagem").html(e + ", " + e.status);
+                    }
+
+
+                });
+
+
+               
+
+            });
+        }
+
+
+        $(document).ready(function () {
+            consultartodos();
+            consultarpornome();
+            
+        });
+
+
+    </script>    
+   
+    
+}
+
